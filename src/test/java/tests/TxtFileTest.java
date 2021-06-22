@@ -17,6 +17,4 @@ public class TxtFileTest {
 
         assertThat(actualData, containsString(expectedData));
     }
-    
-
 }
