@@ -3,16 +3,14 @@ package utils;
 import com.codeborne.pdftest.PDF;
 import com.codeborne.xlstest.XLS;
 import org.apache.commons.io.FileUtils;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Date;
 
 public class Files {
     public static String readTextFromFile(File file) throws IOException {
@@ -30,15 +28,18 @@ public class Files {
     public static XLS getXls (String path) {
         return new XLS(getFile(path));
     }
-    public static XLS getXlsx(String path) throws IOException {
+    public static String getXlsx(String xlsxFilePath, int rowNumber, int cellNumber) throws IOException {
+        File excelFile = new File(xlsxFilePath);
+        FileInputStream fis = new FileInputStream(excelFile);
 
-        HSSFWorkbook myExcelBook = new HSSFWorkbook(new FileInputStream(path));
-        HSSFSheet myExcelSheet = myExcelBook.getSheet("Birthdays");
-        HSSFRow row = myExcelSheet.getRow(0);
+        XSSFWorkbook workbook = new XSSFWorkbook(fis);
+        XSSFSheet sheet = workbook.getSheetAt(0);
 
+        Row row = sheet.getRow(rowNumber);
+        String cell = row.getCell(cellNumber).toString();
 
-        myExcelBook.close();
-
-        return new XLS(getFile(path));
+        workbook.close();
+        fis.close();
+        return cell;
     }
 }
