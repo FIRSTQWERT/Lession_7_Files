@@ -2,7 +2,6 @@ package tests;
 
 import com.codeborne.pdftest.PDF;
 import org.junit.jupiter.api.Test;
-
 import java.io.IOException;
 
 import static com.codeborne.pdftest.PDF.containsText;

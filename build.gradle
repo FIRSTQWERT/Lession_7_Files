@@ -15,6 +15,8 @@ repositories {
 dependencies {
     testImplementation(
             'org.junit.jupiter:junit-jupiter-api:5.6.0',
+            'org.wso2.orbit.org.apache.poi:poi-scratchpad:3.17.0.wso2v1',
+            'org.wso2.orbit.org.apache.poi:poi-ooxml:3.17.0.wso2v1',
             'com.codeborne:pdf-test:1.6.1',
             'com.codeborne:xls-test:1.4.3',
             'org.hamcrest:hamcrest-all:1.3',

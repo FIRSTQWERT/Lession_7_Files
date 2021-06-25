@@ -9,8 +9,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static utils.Files.getDocx;
 
 public class DocxFileTest {
-@Test
-        void docxTest ( ) throws InvalidFormatException, IOException {
+        @Test
+        void docxTest () throws InvalidFormatException, IOException {
                 String docxFilePath = "src/test/resources/files/1.docx";
                 String expectedData = "Simple docx test";
                 String text = getDocx(docxFilePath);
